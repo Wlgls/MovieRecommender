@@ -2,6 +2,8 @@
 
 一个简易的电影推荐系统，包括用户注册登陆，展示电影信息，为我推荐电影，我的观影记录四个模块。
 
+因为实现的时间大概也有十几天，所以大概率会是一个拼凑而成的怪物，大家尽力而为。
+
 ### 参考内容
 
 * [https://github.com/JaniceWuo/MovieRecommend](https://github.com/JaniceWuo/MovieRecommend)
