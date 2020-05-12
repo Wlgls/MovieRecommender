@@ -112,7 +112,7 @@ $: python manage.py startapp Recommend
 $: python manage.py startapp Items
 ```
 
-​	添加并设置了urls.py等文件。
+​	添加并设置了urls.py, views等文件。具体内容可直接参考源码。
 
 MovieRecommend/settings.py中设置数据库为mysql， 需要注意的是，请务必更改为自己的数据库信息：
 
@@ -145,4 +145,4 @@ DATABASES = {
 
 #### 工作方式
 
-请学习一点点git的格式，当你在设计时，请为自己创建一个单独的分支，而不是直接在master上进行操作提交。
+请直接克隆我的项目，并学习一点点git的格式，当你在设计时，请为自己创建一个单独的分支，而不是直接在master上进行操作提交。
