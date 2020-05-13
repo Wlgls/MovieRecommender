@@ -79,9 +79,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'MovieRecommend',
-        'USER': 'peeeyiii',
-        'PASSWORD': 'peeeyiii',
-        'HOST': '127.0.0.1',
+        # 'USER': 'peeeyiii',
+	'USER': 'smith',        
+	#'PASSWORD': 'peeeyiii',
+	'PASSWORD': 'smith',        
+	'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }

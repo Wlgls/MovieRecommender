@@ -4,6 +4,7 @@ from . import forms, models
 from sqlalchemy.orm import sessionmaker
 from .models import Users, engine
 from django.shortcuts import redirect
+from Items.views import index as nextapp
 # Create your views here.
 DBsession = sessionmaker(bind=engine)
 
@@ -54,7 +55,7 @@ def login(request):
                 return render(request, "login/login.html", locals())  # local()返回所有本地变量，并作为字典类型变量返回
 #               正因为返回了login_form变量所以才能让用户在出错的时候能继续填表且不丢失之前填过的数据。
             if password == user.Password:
-                return redirect(index)
+                return redirect(transform)
             else:
                 message = "密码不正确"
                 return render(request, "login/login.html", locals())
@@ -65,5 +66,6 @@ def login(request):
     return render(request, "login/login.html", locals())
 
 
-def index(request):
-    return HttpResponse("这将是下一个app的页面")
+def transform(request):
+    return redirect(nextapp)
+    # return HttpResponse("这是下一个app的界面")

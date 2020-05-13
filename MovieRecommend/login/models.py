@@ -13,6 +13,6 @@ class Users(Base):
     Password = Column(String(256), nullable=False)
 
 
-engine = create_engine('mysql+mysqlconnector://peeeyiii:peeeyiii@127.0.0.1:3306/MovieRecommend')
+engine = create_engine('mysql+mysqlconnector://smith:smith@127.0.0.1:3306/MovieRecommend')
 # Base.metadata.create_all(engine)
 
