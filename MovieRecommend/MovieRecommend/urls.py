@@ -21,4 +21,5 @@ urlpatterns = [
     path('login/', include('login.urls')),
     path('Items/', include('Items.urls')),
     path('Recommend/', include('Recommend.urls')),
+    path('captcha', include('captcha.urls'))
 ]
