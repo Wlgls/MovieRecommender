@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import forms, models
-from sqlalchemy.orm import sessionmaker
-from .models import Users, engine
+# from sqlalchemy.orm import sessionmaker
+from .models import Users# , engine
 from django.shortcuts import redirect
 from Items.views import index as nextapp
 # Create your views here.
-DBsession = sessionmaker(bind=engine)
+
+# DBsession = sessionmaker(bind=engine)
 
 
 def register(request):
-    session = DBsession()
     if request.method == "POST":
         register_form = forms.RegisterForm(request.POST)
         if register_form.is_valid():
@@ -22,15 +22,13 @@ def register(request):
                 return render(request, "login/register.html", locals())
             else:
                 try:
-                    same_name_user = session.query(Users).filter(Users.Username==username).one()
+                    same_name_user = Users.objects.get(Username==username)
                     if same_name_user:
                         message = "该用户已存在"
                         return render(request, "login/register.html", locals())
                 except:
                     new_user = Users(Username=username, Password=password1)
-                    session.add(new_user)
-                    session.commit()
-                    session.close()
+                    new_user.save()
                     # return redirect("login")
                     return redirect("/login/")
         else:
@@ -41,15 +39,16 @@ def register(request):
 
 
 def login(request):
-    session = DBsession()
+    # session = DBsession()
     if request.method == "POST":
         login_form = forms.Userform(request.POST)
         if login_form.is_valid():
             username = login_form.cleaned_data.get('username')
             password = login_form.cleaned_data.get('password')
             try:
-                user = session.query(Users).filter(Users.Username==username).one()
-                session.close()
+                user = Users.objects.get(Username=username)
+                # session.close()
+                print(user)
             except:
                 message = "该用户不存在"  # 这个异常是指查询数据库的异常或者当所查对象不再库中也是异常
                 return render(request, "login/login.html", locals())  # local()返回所有本地变量，并作为字典类型变量返回

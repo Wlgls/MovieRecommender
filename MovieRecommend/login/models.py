@@ -1,18 +1,17 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column,Integer,String
-import mysql.connector
+from django.db import models
+
 # Create your models here.
-Base = declarative_base()
+# Base = declarative_base()
 
 
-class Users(Base):
-    __tablename__ = 'Users'
-    UserID = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    Username = Column(String(128), unique=True, nullable=False)
-    Password = Column(String(256), nullable=False)
+class Users(models.Model):
+    class Meta:
+        db_table = 'Users'
+    UserID = models.AutoField(primary_key=True)
+    Username = models.CharField(max_length=100, unique=True, blank=False)
+    Password = models.CharField(max_length=100, blank=False)
 
 
-engine = create_engine('mysql+mysqlconnector://smith:smith@127.0.0.1:3306/MovieRecommend')
+# engine = create_engine('mysql+mysqlconnector://smith:smith@127.0.0.1:3306/MovieRecommend')
 # Base.metadata.create_all(engine)
 
