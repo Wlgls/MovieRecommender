@@ -1,0 +1,40 @@
+{% extends 'Items/base.html' %}
+{% load staticfiles %}
+{% block body %}
+	<div class="box">
+	<div class="contents">
+        <div class="items">
+    
+        <h4>{{ current_cat }}</h4>
+        {% if item_list.count %}
+           {% for movie in item_list %}
+           <div class="movie_item">
+
+		<div class="image">
+                <img src="{{ movie.Cover }}" width = 90px >
+            	</div>
+
+                <div class="info">
+		 
+		 <p><font size="5" color = "black">{{ movie.MovieTitle }}</font></p>
+                 <p>{{ movie.StoryLine }}</p>
+               
+                          
+            </div>
+            <div class="handles">
+               <button class="seen btn btn-link"  type="button" >seen
+                    <span class="glyphicon glyphicon-ok-sign"></span></button>
+                    
+            </div>
+            <div class="clear"></div>
+        </div>
+        {% endfor %}
+	{% endif %}
+	
+	</div>
+        </div>
+	</div>
+
+    
+
+{% endblock %}
