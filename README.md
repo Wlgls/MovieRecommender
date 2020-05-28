@@ -146,3 +146,17 @@ DATABASES = {
 #### 工作方式
 
 请直接克隆我的项目，并学习一点点git的格式，当你在设计时，请为自己创建一个单独的分支，而不是直接在master上进行操作提交。
+
+### 2020-5-13 实现了登陆界面
+
+登陆界面实现，包括登陆和注册功能，登陆后转入电影展示界面。
+
+使用时，请先运行:
+
+```
+$: python manage.py migrate
+$: python manage.py makemigration
+```
+
+然后更改login/models.py中engine配置和MovieRecommend/settings.py中数据库的配置。
+

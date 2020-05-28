@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'login',
+    'login',
     'captcha',
-    'login.apps.LoginConfig'
+    'Items'
 ]
 
 MIDDLEWARE = [
@@ -81,9 +81,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'MovieRecommend',
         'USER': 'peeeyiii',
+        # 'USER': 'smith',
         'PASSWORD': 'peeeyiii',
+        # 'PASSWORD': 'smith',
         'HOST': '127.0.0.1',
-        'PORT': '3306',
+            'PORT': '3306',
     }
 }
 
@@ -121,7 +123,9 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+

@@ -1,12 +1,10 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import forms, models
-# from sqlalchemy.orm import sessionmaker
-# from .models import Users, engine
 from django.shortcuts import redirect
-# Create your views here.
-# DBsession = sessionmaker(bind=engine)
 import hashlib
+from Items.views import index
 
 
 def hash_code(s, salt='pwz'):
@@ -28,6 +26,7 @@ def register(request):
             if password1 != password2:
                 message = "两次密码不一致"
                 return render(request, "login/register.html", locals())
+                # return render(request, "login/register.html", locals())
             else:
                 # same_name_user = session.query(Users).filter(Users.Username==username).one()
                 same_name_user = models.Users.objects.filter(Username = username)
@@ -35,16 +34,13 @@ def register(request):
                     message = "该用户已存在"
                     return render(request, "login/register.html", locals())
                 else:
-                    # new_user = Users(Username=username, Password=password1)
-                    # session.add(new_user)
-                    # session.commit()
-                    # session.close()
+
                     new_user = models.Users()
                     new_user.Username = username
                     new_user.Password = hash_code(password1)
                     new_user.save()
-                    # return redirect("login")
-                    return redirect("/login/")
+                    # return redirect("/login/")
+                    return redirect("/")
         else:
             message = "请检查数据有效性"
             return render(request, "login/register.html", locals())
@@ -72,6 +68,7 @@ def login(request):
 #               正因为返回了login_form变量所以才能让用户在出错的时候能继续填表且不丢失之前填过的数据。
             if hash_code(password) == user.Password:
                 request.session['is_login'] = True
+                request.session['userid'] = user.UserID
                 request.session['username'] = user.Username
                 request.session['password'] = user.Password
                 return redirect(index)
@@ -89,22 +86,20 @@ def logout(request):
     if not request.session.get('is_login'):
         # 本身就处于未登录状态
         # message = "请先登录！"
-        return redirect("/login/")
+        # return redirect("/login/")
+        return redirect("/")
     # request.session.flush()
     return render(request, "login/logout.html")  # 如果你能见到logout这个界面说明session中的登录状态已经被清除了，不可能再回到之前index了
 
 
 def confirm_out(request):
     if not request.session.get('is_login'):
-        return redirect("/login/")
+        # return redirect("/login/")
+        return redirect("/")
     request.session.flush()
-    return redirect("/login/")
+    # return redirect("/login/")
+    return redirect("/")
 
 
-def index(request):
-    if not request.session.get("is_login"):
-        message = "请先登录"
-        login_form = forms.Userform()
-        # 这里注意空表单的名字一定不能错，因为前端中已经绑定了login_form这个表单变量名
-        return render(request, "login/login.html", locals())
-    return render(request, "login/index.html")
+
+

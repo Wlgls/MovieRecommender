@@ -3,7 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-path = '/home/smith/Data/MovieRecommend/data/movies.csv'# 更改路径
+path = '/home/smith/Data/MovieRecommender/data/movies.csv'# 更改路径
 
 df = pd.read_csv(path, usecols=['NAME', 'COVER', 'STORYLINE'])
 
@@ -16,4 +16,4 @@ config = dict(
 )   # 更改自己的数据库信息
 engine = create_engine("mysql+pymysql://{username}:{password}@{address}/{database}?charset={charset}".format(**config))# 使用自己的用户名和密码
 con = engine.connect()
-# df.to_sql(name='Movies', con=con, if_exists='append', index=False)
+df.to_sql(name='Movies', con=con, if_exists='append', index=False)

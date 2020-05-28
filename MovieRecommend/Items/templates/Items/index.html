@@ -1,0 +1,42 @@
+{% extends 'Items/base.html' %}
+{% load static %}
+{% block head %}
+<meta name='referrer' content='no-referrer'>
+<link href="{% static 'Items/css/index.css' %}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<div class='box'>
+    <div class="contents">
+        <div class="items">
+            {% if message %}
+            <div class="alert-warning">{{ message }}</div>
+            {% endif %}
+            {% if item_list.count %}
+            {% for movie in item_list %}
+
+            <div class="movie_item">
+
+                <div class="image">
+                    <img src="{{ movie.Cover }}" width=90px>
+                </div>
+                <div class="info">
+
+                    <p><font size="5" color="black">{{ movie.MovieTitle }}</font></p>
+                    <p>{{ movie.StoryLine }}</p>
+                </div>
+                <div class="handles">
+                    <form action="/Items/add" method="get">
+                        <input type="hidden" name="movieid" value="{{ movie.MovieID }}"/>
+                        <button type="submit">Seen</button>
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>当前查询没有符合的结果，<a href="{% url 'Items:index' %}">查看所有电影</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
