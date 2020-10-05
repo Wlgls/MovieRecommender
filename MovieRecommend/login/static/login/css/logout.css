@@ -1,0 +1,12 @@
+body {
+  height: 100%;
+  background-image: url('../image/bg.jpg');
+}
+.form-group {
+  margin-bottom: 5px;
+}
+form a{
+  display: inline-block;
+  margin-top:25px;
+  line-height: 10px;
+}

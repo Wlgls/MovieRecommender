@@ -1,0 +1,49 @@
+.box{
+    width:720px;
+    position:relative;
+    left:50%;
+    margin-left:-360px;
+    }
+.contents{float: right;margin-right:10px;width: 750px}
+.items{margin-left:50px;width: 630px;float: left;}
+.movie_item{width: 600px;float: left ;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    border-bottom: 1px dashed #ddd;
+    }
+.image{width: 100px;float: left}
+.info{width: 480px !important;float: left;margin-right: 10px;margin-left: 10px}
+.clear{clear: both}
+.line{height: 30px;width: 600px}
+.handles{height: 30px;
+        float: right;
+        clear: both;
+        margin-right: 20px;}
+.handle{display: inline}
+p{  width: 470px;
+    height: auto;
+    text-indent: 15px;
+    font-size: 12px;
+    overflow: hidden;
+    color: #666666;
+}
+.type_span{
+    display: inline-block;
+    margin: 10px;
+}
+<<<<<<< HEAD
+=======
+.alert-warning{
+    color:#856404;
+    background-color:#fff3cd;
+    height: 60px;
+    border-color:#ffeeba;
+    text-align: center;
+    vertical-align: middle;
+    font-size:70%;
+}
+.alert-warning hr{
+    border-top-color:#ffe8a1
+}
+.alert-warning
+>>>>>>> pybranch

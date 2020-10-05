@@ -1,0 +1,32 @@
+{% extends 'Items/base.html' %}
+{% load static %}
+{% block head %}
+<meta name='referrer' content='no-referrer'>
+<link href="{% static 'Items/css/index.css' %}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<div class='box'>
+    <div class="contents">
+        <div class="items">
+            {% if message %}
+            <div class="alert-warning">{{ message }}</div>
+            {% endif %}
+            {% for movie in item_list %}
+
+            <div class="movie_item">
+
+                <div class="image">
+                    <img src="{{ movie.Cover }}" width=90px>
+                </div>
+                <div class="info">
+
+                    <p><font size="5" color="black">{{ movie.MovieTitle }}</font></p>
+                    <p>{{ movie.StoryLine }}</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
